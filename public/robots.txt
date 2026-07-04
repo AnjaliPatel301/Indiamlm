@@ -1,0 +1,17 @@
+# robots.txt for India MLM Software
+
+User-agent: *
+Allow: /
+
+# Block unnecessary files
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /private/
+Disallow: /temp/
+
+# XML Sitemap
+Sitemap: https://indiamlm.tecai.in/sitemap.xml
+
+# Host
+Host: https://indiamlm/tecai.in
