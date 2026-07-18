@@ -308,11 +308,14 @@ function BlogCard({ blog, onOpen }) {
 
 function BlogListPage({ onOpen }) {
   return (
-    <div className="bg-[#fbfaf8] min-h-screen py-14 sm:py-20  px-4">
-      <div className="max-w-6xl pt-20 mx-auto">
+    <div className="bg-[#fbfaf8] min-h-screen py-14 sm:py-20 px-4">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12 sm:mb-14">
-                   <h1 className="text-2xl sm:text-3xl md:text-[34px] font-extrabold text-slate-900 mb-3">
-           Our  Blogs
+          <span className="inline-block bg-orange-500 text-white text-[11px] font-bold tracking-wide uppercase px-4 py-1.5 rounded-full mb-5">
+            Our Blog
+          </span>
+          <h1 className="text-2xl sm:text-3xl md:text-[34px] font-extrabold text-slate-900 mb-3">
+            Insights on MLM Software &amp; Direct Selling
           </h1>
           <p className="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">
             Guides, pricing breakdowns, and industry trends for network marketing

@@ -58,17 +58,17 @@ const trustBadges = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] bg-white">
+    <footer className="border-t border-white/[0.06] bg-[#0B1A3A]">
       <div className="container-app section-pad">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-3 lg:grid-cols-6">
           <div className="col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 text-lg font-semibold text-ink-100">
              <img src="/mlm_logo.png" className='w-20' alt="" />
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-400">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white">
               Enterprise MLM software trusted by network marketing companies in 40+ countries.
             </p>
-            <div className="mt-5 space-y-2 text-sm text-ink-400">
+            <div className="mt-5 space-y-2 text-sm text-white">
               <a href="mailto:hello@apexmlm.com" className="flex items-center gap-2 hover:text-primary-400">
                 <Mail size={15} /> info@tecai.in
               </a>
@@ -89,7 +89,7 @@ export default function Footer() {
                   <li key={link.path}>
                     <Link
                       to={link.path}
-                      className="text-sm text-ink-400 transition-colors hover:text-primary-400"
+                      className="text-sm text-white transition-colors hover:text-primary-400"
                     >
                       {link.label}
                     </Link>
@@ -104,7 +104,7 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-col items-center  justify-between  border-t border-white/[0.06]  md:flex-row">
         
-          <p className="text-xs text-ink-600">
+          <p className="text-xs text-white">
             © {new Date().getFullYear()} India MLM Software. All rights reserved.
           </p>
          <div className='flex justify-between gap-1'>

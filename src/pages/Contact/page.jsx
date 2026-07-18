@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Cta from "../Home/cta"
+
+import { Headphones, Send } from "lucide-react";
+ 
 /**
  * TecAI — Contact Page
  * Single-file React + Tailwind component.
@@ -70,6 +73,8 @@ function NetworkGraph() {
     </svg>
   );
 }
+
+
 
 /* ----------------------------- icons ----------------------------- */
 
@@ -169,24 +174,27 @@ export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    phone: "",
-    plan: "Binary MLM",
+    number: "",
+    subject: "",
     message: "",
   });
 
-  function updateField(key, value) {
-    setForm((f) => ({ ...f, [key]: value }));
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
-    setForm({ name: "", email: "", phone: "", plan: "Binary MLM", message: "" });
-  }
-
-  const inputClasses =
-    "w-full border border-[#e7e3dc] bg-[#fbfaf8] rounded-[10px] px-3.5 py-2.5 text-[14.5px] text-[#15131a] outline-none transition focus:border-orange-500 focus:ring-4 focus:ring-orange-500/15";
-  const labelClasses = "block text-[12.5px] font-bold text-stone-600 mb-1.5";
+    setForm({
+      name: "",
+      email: "",
+      number: "",
+      subject: "",
+      message: "",
+    });
+  };
 
   return (
     <div className="bg-[#fbfaf8] text-[#15131a] font-sans">
@@ -199,7 +207,7 @@ export default function ContactPage() {
             "url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1800')",
         }}
       >
-        <div className="absolute inset-0 bg-orange-500/80"></div>
+        <div className="absolute inset-0 "></div>
 
         <div className="relative z-10 flex h-full items-center justify-center flex-col text-white px-5">
 
@@ -207,14 +215,14 @@ export default function ContactPage() {
             Contact Us
           </h1>
 
-          <p className="mt-5 text-xl text-center max-w-2xl">
+          <p className="mt-5 text-xl text-center bg-orange-600 p-2 max-w-2xl">
             Have questions about our MLM Software? Contact our expert team today.
           </p>
 
         </div>
       </section> 
 
-      {/* ============ CONTACT + MAP + FORM ============ */}
+      {/* ============ CONTACT DETAILS ============ */}
       <section id="contact-form" className="py-16 sm:py-[72px]">
         <div className="max-w-[1180px] mx-auto px-6">
           <div className="max-w-[620px] mb-10">
@@ -230,91 +238,155 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-11">
-            {/* left: details + map */}
-            <div>
-              <div className="border border-[#e7e3dc] bg-white rounded-2xl p-6 sm:p-7">
-                <InfoRow
-                  icon={<MailIcon />}
-                  label="Email"
-                  value={
-                    <a href="mailto:info@tecai.in" className="hover:text-orange-700">
-                      info@tecai.in
-                    </a>
-                  }
-                />
-                <InfoRow
-                  icon={<PhoneIcon />}
-                  label="Phone"
-                  value={
-                    <a href="tel:+17024031779" className="hover:text-orange-700">
-                      +91 (702) 403-1779
-                    </a>
-                  }
-                />
-                <InfoRow
-                  icon={<PinIcon />}
-                  label="Office Address"
-                  value={
-                    <>
-                      3rd Floor, Mishika Tower, 201, Sapna Sangeeta Rd,
-                      <br />
-                      Sarvoday Nagar, Indore, Madhya Pradesh 452001
-                    </>
-                  }
-                  last
-                />
-              </div>
-
-            
-
-            </div>
-            <div>
-                  <div className="mt-5 rounded-2xl overflow-hidden border border-[#e7e3dc] h-[260px] sm:h-[280px]">
-                <iframe
-                  title="TecAI office location"
-                  src="https://www.google.com/maps?q=Mishika+Tower,+201,+Sapna+Sangeeta+Rd,+Sarvoday+Nagar,+Indore,+Madhya+Pradesh+452001&output=embed"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full border-0"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-
-         
+          {/* contact details on top, full width */}
+          <div className="border border-[#e7e3dc] bg-white rounded-2xl p-6 sm:p-7 grid grid-cols-1 sm:grid-cols-3 gap-x-6">
+            <InfoRow
+              icon={<MailIcon />}
+              label="Email"
+              value={
+                <a href="mailto:info@tecai.in" className="hover:text-orange-700">
+                  info@tecai.in
+                </a>
+              }
+              last
+            />
+            <InfoRow
+              icon={<PhoneIcon />}
+              label="Phone"
+              value={
+                <a href="tel:+17024031779" className="hover:text-orange-700">
+                  +91 (702) 403-1779
+                </a>
+              }
+              last
+            />
+            <InfoRow
+              icon={<PinIcon />}
+              label="Office Address"
+              value={
+                <>
+                  3rd Floor, Mishika Tower, 201, Sapna Sangeeta Rd,
+                  <br />
+                  Sarvoday Nagar, Indore, Madhya Pradesh 452001
+                </>
+              }
+              last
+            />
           </div>
         </div>
       </section>
 
-      {/* ============ FAQ ============ */}
-      <section className="bg-white border-t border-[#e7e3dc] py-16 sm:py-[72px]">
-        <div className="max-w-[1180px] mx-auto px-6">
-          <div className="max-w-[620px] mb-10">
-            <span className="block text-xs font-bold tracking-[.12em] uppercase text-orange-700 mb-2.5">
-              Frequently asked
-            </span>
-            <h2 className="font-display text-[28px] sm:text-[36px] font-extrabold mb-3 tracking-tight">
-              MLM software, answered
-            </h2>
-            <p className="text-stone-500 text-[15.5px] leading-relaxed">
-              The questions we hear most often from teams evaluating a binary, matrix, or
-              unilevel rollout.
-            </p>
-          </div>
 
-          <div className="border-t border-[#e7e3dc]">
-            {FAQS.map((item, i) => (
-              <FaqItem
-                key={i}
-                index={i}
-                question={item.q}
-                answer={item.a}
-                isOpen={openFaq === i}
-                onToggle={() => setOpenFaq(openFaq === i ? null : i)}
-              />
-            ))}
+  <section className="bg-white">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-3 px-5 py-20 md:grid-cols-2 md:gap-3">
+        {/* Left: person image + floating chat card */}
+        <div className="relative mx-auto gap-8 w-full max-w-md">
+          {/* Person image — apni image ka path yahan daalo */}
+          <img
+            src="/contact.png"
+            alt="Support representative"
+            className="mx-auto h-[480px] p-5 w-full max-w-md object-cover object-top"
+          />
+ 
+          {/* Floating "Chat With Live" card */}
+          <div className="absolute -left-4 top-24 w-56 me-6 rounded-2xl bg-orange-600 p-6 text-center text-white shadow-xl sm:-left-10 md:top-32">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-white/15">
+              <Headphones size={26} />
+            </div>
+            <h3 className="text-lg font-semibold">Chat With Live !</h3>
+            <p className="mt-3 text-xs leading-5 text-white/85">
+              Our support team is online and ready to help. Ask us anything
+              about the product, pricing, or getting started.
+            </p>
+            <button className="mt-5 w-full rounded-full bg-white py-2 text-sm font-semibold text-orange-600 transition hover:scale-[1.03]">
+              LET&rsquo;S CHAT
+            </button>
           </div>
+        </div>
+ 
+        {/* Right: contact form */}
+        <div>
+                   <h2 className="text-3xl font-bold leading-tight text-slate-900 md:text-4xl">
+            <span className="text-orange-600">Reach</span> &amp; Get In Touch
+            <br />
+            With Us !
+          </h2>
+ 
+          <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <input
+                type="text"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                placeholder="Your Name*"
+                required
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm text-slate-700 placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-100"
+              />
+              <input
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="Your Email*"
+                required
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm text-slate-700 placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-100"
+              />
+              <input
+                type="tel"
+                name="number"
+                value={form.number}
+                onChange={handleChange}
+                placeholder="Your number*"
+                required
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm text-slate-700 placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-100"
+              />
+              <input
+                type="text"
+                name="subject"
+                value={form.subject}
+                onChange={handleChange}
+                placeholder="Your Subject*"
+                required
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm text-slate-700 placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-100"
+              />
+            </div>
+ 
+            <textarea
+              name="message"
+              value={form.message}
+              onChange={handleChange}
+              placeholder="Enter message"
+              rows={6}
+              required
+              className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm text-slate-700 placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-100"
+            />
+ 
+            <button
+              type="submit"
+              className="inline-flex items-center gap-2 rounded-full bg-orange-600 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-orange-700"
+            >
+              SEND MESSAGE
+              <Send size={16} />
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+
+      {/* ============ MAP (sabse niche, footer se pehle) ============ */}
+      <section className="border-t border-[#e7e3dc]">
+        <div className="h-[360px] sm:h-[460px] w-full">
+          <iframe
+            title="TecAI office location"
+            src="https://www.google.com/maps?q=Mishika+Tower,+201,+Sapna+Sangeeta+Rd,+Sarvoday+Nagar,+Indore,+Madhya+Pradesh+452001&output=embed"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="w-full h-full border-0"
+            allowFullScreen
+          />
         </div>
       </section>
 

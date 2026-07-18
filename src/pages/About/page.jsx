@@ -1,443 +1,742 @@
-import React from "react";
-import Cta from "../Home/cta"
+import { useState } from "react";
+import {
+  Users,
+  Network,
+  Briefcase,
+  Cpu,
+  ShieldCheck,
+  Share2,
+  Settings,
+  Target,
+  Eye,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import {
+   Laptop,Globe,Smartphone,
+  Monitor,
+  ShoppingCart,
+  CreditCard,
+  Wallet,
+  Link2,
+  Bot,
+  MessageCircle,
+  Video,
+  MessagesSquare,
+  Palette,
+  TrendingUp,
+  BarChart3,
+  Cloud,
+} from "lucide-react";
 
-/**
- * INDIA MLM — About Us Page
- * Single-file React + Tailwind component.
- * Sections: About intro, Empowering tech + stats, Meet the team, Vision & Mission.
- * Brand accent: orange/b/lue (#4f46e5 family), matching the reference UI.
- */
+/* ---------------------------------------------------------- */
+/* 1. HERO                                                     */
+/* ---------------------------------------------------------- */
+function Hero() {
+  const stats = [
+    { icon: Users, value: "200+", label: "Specialized Consultants" },
+    { icon: Network, value: "100%", label: "Customer Satisfaction" },
+    { icon: Briefcase, value: "1K+", label: "Completed Cases" },
+  ];
 
-/* ----------------------------- small icons ----------------------------- */
-
-function ArrowRightIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-      <path d="M5 12h14M13 6l6 6-6 6" />
-    </svg>
-  );
-}
+     <section
+      className="relative bg-cover pt-20 bg-center bg-slate-900"
+      style={{
+        backgroundImage: "url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YWJvdXR8ZW58MHx8MHx8fDA%3D)",
+      }}
+    >
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0  bg-slate-900/75" />
 
-function CheckIcon() {
-  return (
-    <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 shrink-0">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-        <path d="M20 6L9 17l-5-5" />
-      </svg>
-    </span>
-  );
-}
-
-function Dot() {
-  return <span className="mt-2 w-2.5 h-2.5 rounded-full bg-orange-600 shrink-0" />;
-}
-
-/* ----------------------------- decorative badge stack ----------------------------- */
-
-function BadgeStack() {
-  return (
-    <div className="relative bg-white rounded-2xl border border-slate-100 shadow-sm p-5 sm:p-7 h-full">
-      <div className="relative aspect-[4/3] flex items-center justify-center">
-        {/* background circle */}
-        <div className="absolute w-[78%] h-[78%] rounded-full bg-gradient-to-br from-slate-800 to-slate-900" />
-
-        {/* center ribbon badge */}
-        <svg viewBox="0 0 120 140" className="relative z-10 w-28 sm:w-32">
-          <circle cx="60" cy="55" r="34" fill="#fff" />
-          <circle cx="60" cy="55" r="27" fill="#3b82f6" />
-          <circle cx="60" cy="55" r="19" fill="#fff" />
-          <path
-            d="M48 60 L56 50 L62 56 L72 44"
-            stroke="#22c55e"
-            strokeWidth="5"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path d="M46 80 L60 130 L66 105 L80 80 Z" fill="#3b82f6" />
-          <path d="M46 80 L60 130 L54 100 Z" fill="#1d4ed8" opacity="0.5" />
-        </svg>
-
-        {/* top-left analytics card */}
-        <div className="absolute -top-1 left-0 sm:left-2 bg-white rounded-lg shadow-md p-2 rotate-[-6deg]">
-          <svg width="44" height="32" viewBox="0 0 44 32">
-            <rect width="44" height="32" rx="4" fill="#0ea5e9" />
-            <path d="M5 24 L14 14 L20 19 L30 7 L39 13" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round" />
-            <circle cx="39" cy="13" r="2.5" fill="#f97316" />
-          </svg>
+      <div className="relative mx-auto grid  max-w-7xl grid-cols-1 gap-10 px-6 pb-24 pt-20 md:pb-32">
+        <div className="max-w-md">
+          <h1 className="text-4xl font-bold leading-tight text-white md:text-5xl">
+            AI Consulting
+            <br />
+            Services
+          </h1>
+          <span className="mt-3 block h-1 w-16 bg-orange-600" />
+          <p className="mt-5 max-w-md text-sm leading-6 text-slate-300">
+            Our expert AI consultants work closely with you to understand
+            your unique challenges and objectives.
+          </p>
+          <button className="mt-7 rounded-md bg-orange-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-orange-700">
+            GET A QUOTE
+          </button>
         </div>
+      </div>
 
-        {/* top-right CMMI-style badge */}
-        <div className="absolute -top-2 right-0 sm:right-2 bg-white rounded-lg shadow-md px-2.5 py-1.5 rotate-[5deg]">
-          <span className="text-[11px] font-extrabold text-slate-900 italic">IM<span className="text-sky-500">L3</span></span>
-        </div>
-
-        {/* lock/shield bottom-left */}
-        <div className="absolute bottom-6 left-0 sm:left-2">
-          <svg width="34" height="40" viewBox="0 0 34 40">
-            <path d="M17 1 L33 7 V19 C33 30 26 36 17 39 C8 36 1 30 1 19 V7 Z" fill="#cbd5e1" stroke="#94a3b8" strokeWidth="1" />
-            <rect x="10" y="18" width="14" height="11" rx="2" fill="#475569" />
-            <circle cx="17" cy="23" r="2.4" fill="#fbbf24" />
-            <path d="M12 18 V13 a5 5 0 0 1 10 0 V18" stroke="#475569" strokeWidth="2.4" fill="none" />
-          </svg>
-        </div>
-
-        {/* stars */}
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
-          {[0, 1, 2, 3, 4].map((i) => (
-            <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#facc15">
-              <path d="M12 2l2.9 6.6 7.1.6-5.4 4.6 1.7 6.9-6.3-3.8-6.3 3.8 1.7-6.9-5.4-4.6 7.1-.6z" />
-            </svg>
+      {/* Stats bar */}
+      <div className="absolute inset-x-0 bottom-0 translate-y-1/2 px-6">
+        <div className="mx-auto grid max-w-5xl grid-cols-3 gap-6 rounded-2xl bg-slate-950 px-6 py-8 shadow-2xl md:gap-4">
+          {stats.map(({ icon: Icon, value, label }, i) => (
+            <div key={i} className="flex flex-col items-center text-center">
+              <Icon className="mb-3 text-orange-500" size={28} />
+              <p className="text-2xl font-bold text-white md:text-3xl">{value}</p>
+              <p className="mt-1 text-xs text-slate-400 md:text-sm">{label}</p>
+            </div>
           ))}
         </div>
-
-        {/* income pie chart card bottom-right */}
-        <div className="absolute -bottom-2 -right-1 sm:right-2 bg-white rounded-lg shadow-md p-2 w-[120px]">
-          <div className="text-[9px] font-semibold text-slate-500 mb-1">Income Source</div>
-          <svg viewBox="0 0 40 40" className="w-12 h-12 mx-auto">
-            <circle r="16" cx="20" cy="20" fill="#f97316" />
-            <path d="M20 20 L20 4 A16 16 0 0 1 33.86 28 Z" fill="#facc15" />
-            <path d="M20 20 L33.86 28 A16 16 0 0 1 20 4 Z" fill="#4f46e5" opacity="0" />
-            <path d="M20 20 L20 4 A16 16 0 0 1 33.86 12 Z" fill="#4f46e5" />
-          </svg>
-          <div className="mt-1.5 space-y-0.5">
-            <div className="flex items-center gap-1 text-[8px] text-slate-500">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600" /> Direct Referral
-            </div>
-            <div className="flex items-center gap-1 text-[8px] text-slate-500">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500" /> Binary Commission
-            </div>
-            <div className="flex items-center gap-1 text-[8px] text-slate-500">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" /> Leadership Bonus
-            </div>
-          </div>
-        </div>
-
-        {/* network nodes bottom-left */}
-        <div className="absolute bottom-0 left-0 sm:left-4">
-          <svg width="80" height="60" viewBox="0 0 80 60">
-            <line x1="40" y1="30" x2="20" y2="14" stroke="#818cf8" strokeWidth="1.4" />
-            <line x1="40" y1="30" x2="58" y2="16" stroke="#818cf8" strokeWidth="1.4" />
-            <line x1="40" y1="30" x2="16" y2="46" stroke="#818cf8" strokeWidth="1.4" />
-            <line x1="40" y1="30" x2="62" y2="44" stroke="#818cf8" strokeWidth="1.4" />
-            <circle cx="40" cy="30" r="9" fill="#4f46e5" />
-            <circle cx="20" cy="14" r="5" fill="#818cf8" />
-            <circle cx="58" cy="16" r="5" fill="#818cf8" />
-            <circle cx="16" cy="46" r="5" fill="#818cf8" />
-            <circle cx="62" cy="44" r="5" fill="#818cf8" />
-          </svg>
-        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
-/* ----------------------------- tech cube illustration ----------------------------- */
+/* ---------------------------------------------------------- */
+/* 2. ABOUT US                                                 */
+/* ---------------------------------------------------------- */
+function AboutUs() {
+  return (
+    <section className="bg-white pb-24 pt-40 md:pt-48">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
+        <div className="relative mx-auto w-full max-w-sm">
+          <div className="absolute -left-4 -top-4 h-full w-full rounded-tl-[70px] bg-orange-100" />
+          {/* About image — apni image ka path daalo */}
+          <img
+            src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YWJvdXR8ZW58MHx8MHx8fDA%3D"
+            alt="Our team at work"
+            className="relative h-80 w-full rounded-tl-[70px] object-cover shadow-xl"
+          />
+        </div>
 
-function TechStackArt() {
-  const tiles = [
-    { label: "CSS", bg: "#1e293b", color: "#38bdf8" },
-    { label: "</>", bg: "#0f766e", color: "#fff" },
-    { label: "⚙", bg: "#1e293b", color: "#cbd5e1" },
-    { label: "HTML", bg: "#f97316", color: "#fff" },
+        <div>
+          <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">About Us</h2>
+          <span className="mt-3 block h-1 w-14 bg-orange-600" />
+          <p className="mt-5 text-sm leading-7 text-slate-500">
+            Credibly innovate granular internal or organic sources whereas
+            high standards in web-readiness. Energistically scale
+            future-proof core competencies vis-a-vis impactful experiences.
+          </p>
+          <button className="mt-7 rounded-md bg-orange-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-orange-700">
+            GET A QUOTE
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------- */
+/* 3. SERVICES                                                 */
+/* ---------------------------------------------------------- */
+function Services() {
+  const cards = [
+    { Icon: ShieldCheck, title: "Secure AI Implementation strategies" },
+    { Icon: Share2, title: "Knowledge centralization Solutions" },
+    { Icon: Cpu, title: "Business Process Automation" },
+    { Icon: Settings, title: "AI implementation" },
   ];
+
   return (
-    <div className="relative w-full h-full min-h-[220px] flex items-center justify-center">
-      <div className="grid grid-cols-2 gap-3 sm:gap-4 rotate-3">
-        {tiles.map((t, i) => (
-          <div
-            key={i}
-            className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl shadow-lg flex items-center justify-center text-xs sm:text-sm font-extrabold"
-            style={{ background: t.bg, color: t.color }}
-          >
-            {t.label}
+    <section className="bg-slate-50 py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <h2 className="max-w-md text-3xl font-bold leading-tight text-slate-900 md:text-4xl">
+              We Provide Best AI Consulting
+            </h2>
+            <span className="mt-3 block h-1 w-14 bg-orange-600" />
           </div>
-        ))}
+          <button className="rounded-md bg-orange-600 px-6 py-3 text-xs font-semibold tracking-wide text-white transition hover:bg-orange-700">
+            VIEW ALL SERVICES
+          </button>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {/* first card */}
+          <div className="rounded-2xl bg-white p-7 shadow-sm">
+            <ShieldCheck className="mb-4 text-orange-600" size={30} />
+            <h3 className="text-base font-semibold text-slate-900">
+              {cards[0].title}
+            </h3>
+            <p className="mt-2 text-xs leading-5 text-slate-500">
+              Credibly innovate granular internal or organic sources.
+            </p>
+          </div>
+
+          {/* highlighted center card */}
+          <div className="rounded-2xl bg-orange-600 p-7 text-white shadow-lg lg:row-span-2">
+            <Cpu className="mb-4" size={30} />
+            <h3 className="text-base font-semibold">AI-Consulting offerings</h3>
+            <p className="mt-2 text-xs leading-5 text-white/85">
+              Credibly innovate granular internal or organic sources.
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-white p-7 shadow-sm">
+            <Share2 className="mb-4 text-orange-600" size={30} />
+            <h3 className="text-base font-semibold text-slate-900">
+              {cards[2].title}
+            </h3>
+            <p className="mt-2 text-xs leading-5 text-slate-500">
+              Credibly innovate granular internal or organic sources.
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-white p-7 shadow-sm">
+            <Network className="mb-4 text-orange-600" size={30} />
+            <h3 className="text-base font-semibold text-slate-900">
+              {cards[1].title}
+            </h3>
+            <p className="mt-2 text-xs leading-5 text-slate-500">
+              Credibly innovate granular internal or organic sources.
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-white p-7 shadow-sm">
+            <Settings className="mb-4 text-orange-600" size={30} />
+            <h3 className="text-base font-semibold text-slate-900">
+              {cards[3].title}
+            </h3>
+            <p className="mt-2 text-xs leading-5 text-slate-500">
+              Credibly innovate granular internal or organic sources.
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="absolute -right-2 top-1/2 -translate-y-1/2 bg-teal-600 rounded-2xl shadow-xl p-3 -rotate-3">
-        <svg width="44" height="50" viewBox="0 0 44 50">
-          <path d="M22 1 L43 9 V25 C43 38 34 45 22 49 C10 45 1 38 1 25 V9 Z" fill="#fff" opacity="0.95" />
-          <rect x="14" y="22" width="16" height="13" rx="2" fill="#0d9488" />
-          <circle cx="22" cy="28" r="2.6" fill="#fde68a" />
-          <path d="M16 22 V16 a6 6 0 0 1 12 0 V22" stroke="#0d9488" strokeWidth="2.6" fill="none" />
-        </svg>
-      </div>
-    </div>
+    </section>
   );
 }
 
-/* ----------------------------- team photo placeholder ----------------------------- */
+/* ---------------------------------------------------------- */
+/* 4. OUR MISSION & OUR VISION                                 */
+/* ---------------------------------------------------------- */
+function MissionVision() {
+  const items = [
+    {
+      Icon: Target,
+      title: "Our Mission",
+      text: "To empower every business with accessible, reliable AI consulting that turns complex technology into practical, measurable outcomes for our clients.",
+    },
+    {
+      Icon: Eye,
+      title: "Our Vision",
+      text: "To be the most trusted AI consulting partner globally, shaping a future where intelligent systems responsibly elevate how businesses operate and grow.",
+    },
+  ];
 
-function TeamPhoto() {
   return (
-    <div className="relative w-full h-64 sm:h-80 md:h-full rounded-2xl overflow-hidden bg-gradient-to-br from-orange-900 via-slate-800 to-slate-900 flex items-center justify-center">
-      <svg width="100%" height="100%" viewBox="0 0 400 300" className="absolute inset-0 opacity-20">
-        <defs>
-          <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
-            <path d="M0 0H32V32" fill="none" stroke="#fff" strokeWidth="0.5" />
-          </pattern>
-        </defs>
-        <rect width="400" height="300" fill="url(#grid)" />
-      </svg>
-      <div className="relative z-10 flex flex-col items-center text-center px-6">
-        <div className="flex -space-x-3 mb-4">
-          {["A", "S", "R", "P", "K"].map((letter, i) => (
+    <section className="bg-white py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-xl text-center">
+          <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
+            Mission &amp; Vision
+          </h2>
+          <span className="mx-auto mt-3 block h-1 w-14 bg-orange-600" />
+        </div>
+
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
+          {items.map(({ Icon, title, text }, i) => (
             <div
               key={i}
-              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-white/80 flex items-center justify-center font-bold text-white text-sm sm:text-base"
-              style={{
-                background: ["#4f46e5", "#3b82f6", "#0ea5e9", "#6366f1", "#8b5cf6"][i],
-                zIndex: 5 - i,
-              }}
+              className="rounded-2xl border border-slate-100 bg-slate-50 p-9 shadow-sm transition hover:shadow-md"
             >
-              {letter}
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-orange-600 text-white">
+                <Icon size={26} />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900">{title}</h3>
+              <span className="mt-2 block h-0.5 w-10 bg-orange-600" />
+              <p className="mt-4 text-sm leading-7 text-slate-500">{text}</p>
             </div>
           ))}
         </div>
-        <p className="text-white/70 text-xs sm:text-sm max-w-[260px]">
-          The people behind India MLM's network marketing platforms
-        </p>
       </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------- */
+/* 5. OUR EXPERTS                                               */
+/* ---------------------------------------------------------- */
+function OurExperts() {
+  const team = [
+    { name: "Vinesh Patel", role: "Founder", img: "https://tecai.in/1backend/uploads/services/1783765569824.png" },
+    { name: "Ankita Urbe", role: "HR Manager", img: "https://tecai.in/1backend/uploads/services/1783765584660.png" },
+    { name: "Niko Anderson", role: "CEO", img: "https://tecai.in/1backend/uploads/services/1783765595731.png" },
+  ];
+
+  return (
+    <section className="bg-slate-50 py-24">
+      <div className="mx-auto max-w-6xl px-6 text-center">
+        <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">Our Experts</h2>
+        <span className="mx-auto mt-3 block h-1 w-14 bg-orange-600" />
+        <p className="mx-auto mt-4 max-w-md text-sm leading-6 text-slate-500">
+          Credibly innovate granular internal or organic sources.
+        </p>
+
+        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-3">
+          {team.map(({ name, role, img }, i) => (
+            <div key={i} className="relative">
+              <div className="w-full overflow-hidden rounded-tl-[60px] rounded-br-[60px] shadow-lg bg-slate-200">
+                {/* Expert image — apni image ka path daalo */}
+                <img
+                  src={img}
+                  alt={name}
+                  loading="lazy"
+                  className="h-64 w-full object-cover"
+                />
+              </div>
+              <div className="relative z-10 -mt-8 mx-auto w-[85%] rounded-xl bg-white px-4 py-4 shadow-md">
+                <h3 className="text-sm font-semibold text-slate-900">{name}</h3>
+                <p className="mt-1 text-xs text-orange-600">{role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------- */
+/* 5b. MENTORS                                                  */
+/* ---------------------------------------------------------- */
+const mentors = [
+  { name: "Chand Sahil", role: "Head Mentor", color: "#0f172a", offset: "mt-10", img: "https://i.pravatar.cc/150?img=12" },
+  { name: "Kabir Adiba", role: "Marketing", color: "#f97316", offset: "-mt-4", img: "https://i.pravatar.cc/150?img=32" },
+  { name: "Ethan Mahjeans", role: "Lead Design", color: "#38bdf8", offset: "mt-14", img: "https://i.pravatar.cc/150?img=15" },
+  { name: "Cayler Tya", role: "PR Manager", color: "#1e293b", offset: "-mt-2", img: "https://i.pravatar.cc/150?img=45" },
+  { name: "Andra Wagera", role: "Senior Manager", color: "#94a3b8", offset: "mt-16", img: "https://i.pravatar.cc/150?img=25" },
+  { name: "Aayo Sunmalibar", role: "Manager", color: "#38bdf8", offset: "mt-2", img: "https://i.pravatar.cc/150?img=9" },
+  { name: "Haya Aniny", role: "Vice President", color: "#f59e0b", offset: "mt-14", img: "https://i.pravatar.cc/150?img=47" },
+  { name: "Fadili Loop Editors", role: "Media Editor", color: "#0f172a", offset: "mt-6", img: "https://i.pravatar.cc/150?img=60" },
+];
+
+function MentorAvatar({ name, role, color, offset, index, img }) {
+  const initials = name
+    .split(" ")
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("");
+
+  return (
+    <div
+      className={`flex flex-col items-center text-center opacity-0 animate-mentor-in ${offset}`}
+      style={{ animationDelay: `${index * 0.12}s` }}
+    >
+      <div
+        className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-lg overflow-hidden flex items-center justify-center text-white font-bold text-sm sm:text-base ring-4 ring-white animate-mentor-float"
+        style={{ background: color, animationDelay: `${index * 0.3}s` }}
+      >
+        {img ? (
+          <img
+            src={img}
+            alt={name}
+            loading="lazy"
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+              e.currentTarget.nextSibling.style.display = "flex";
+            }}
+          />
+        ) : null}
+        <span
+          className="absolute inset-0 items-center justify-center"
+          style={{ display: img ? "none" : "flex" }}
+        >
+          {initials}
+        </span>
+      </div>
+      <p className="mt-3 text-xs sm:text-sm font-semibold text-slate-800 whitespace-nowrap">
+        {name}
+      </p>
+      <p className="text-[10px] sm:text-xs text-slate-400">{role}</p>
     </div>
   );
 }
 
-/* ----------------------------- main page ----------------------------- */
-
-export default function AboutPage() {
+function MentorsSection() {
   return (
-    <div className="bg-white text-slate-900">
+    <section className="relative py-16 sm:py-20 px-4 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+      <style>{`
+        @keyframes mentorFadeIn {
+          from { opacity: 0; transform: translateY(24px) scale(0.9); }
+          to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes mentorFloat {
+          0%, 100% { transform: translateY(0); }
+          50%      { transform: translateY(-8px); }
+        }
+        .animate-mentor-in {
+          animation: mentorFadeIn 0.6s ease-out forwards;
+        }
+        .animate-mentor-float {
+          animation: mentorFloat 4s ease-in-out infinite;
+        }
+        .animate-mentor-float:hover {
+          animation-play-state: paused;
+          transform: scale(1.12);
+          transition: transform 0.25s ease;
+        }
+      `}</style>
+      <div className="max-w-4xl mx-auto text-center mb-14">
+        <h2 className="text-2xl sm:text-3xl md:text-[34px] font-extrabold text-slate-900 leading-snug">
+          Meet Our Amazing <br className="hidden sm:block" />
+          <span className="text-orange-600">Mentor</span> With Super Skills
+        </h2>
+        <p className="text-slate-400 text-xs sm:text-sm max-w-md mx-auto mt-4">
+          Meet the passionate minds behind our success — dedicated, experienced, and
+          always ready to guide.
+        </p>
+      </div>
+      <div className="max-w-5xl mx-auto flex flex-wrap justify-center items-start gap-x-6 gap-y-10 sm:gap-x-10">
+        {mentors.map((m, i) => (
+          <MentorAvatar key={m.name} index={i} {...m} />
+        ))}
+      </div>
+    </section>
+  );
+}
 
-      <Cta/>
-      {/* ============ ABOUT INTRO ============ */}
-      <section className="pt-14 sm:pt-20 pb-12 sm:pb-16 px-4">
-        <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-[42px] font-extrabold mb-3">
-            <span className="text-orange-600">About</span> India MLM
-          </h1>
-          <div className="w-12 h-1 bg-orange-600 rounded-full mx-auto mb-5" />
-          <p className="text-slate-500 text-sm sm:text-base max-w-2xl mx-auto">
-            India's trusted technology partner for network marketing &amp; direct selling
-            software solutions.
+/* ---------------------------------------------------------- */
+/* 6. OUR PROCESS                                               */
+/* ---------------------------------------------------------- */
+function OurProcess() {
+  const steps = [
+    { number: "01", title: "Step 1" },
+    { number: "02", title: "Step 2" },
+    { number: "03", title: "Step 3" },
+  ];
+
+  return (
+    <section className="bg-white py-24">
+      <div className="mx-auto max-w-5xl px-6 text-center">
+        <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">Our Process</h2>
+        <span className="mx-auto mt-3 block h-1 w-14 bg-orange-600" />
+
+        <div className="relative mt-16 grid grid-cols-1 gap-12 sm:grid-cols-3">
+          {/* connecting line */}
+          <div className="absolute left-0 right-0 top-8 hidden border-t-2 border-dashed border-slate-200 sm:block" />
+
+          {steps.map(({ number, title }, i) => (
+            <div key={i} className="relative">
+            <p className="mt-2 text-md font-semibold text-orange-600">{number}</p>
+        
+              <span className="mx-auto mt-2 block h-0.5 w-8 bg-orange-600" />
+              <p className="mt-4 text-xs leading-6 text-slate-500">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                eiusmod tempor incididunt labore et dolore magna aliqua.
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------- */
+/* 7. CASE STUDIES                                              */
+/* ---------------------------------------------------------- */
+function CaseStudies() {
+
+const ecosystem = [
+  {
+    title: "MLM Consulting",
+    icon: Briefcase,
+    color: "from-orange-500 to-red-500",
+    items: [
+      "MLM Business Consultation",
+      "Compensation Plan Consultation",
+      "Business Model Design",
+      "Startup Guidance",
+      "Legal & Compliance",
+      "Growth Strategy",
+    ],
+  },
+  {
+    title: "MLM Software Development",
+    icon: Laptop,
+    color: "from-blue-500 to-cyan-500",
+    items: [
+      "Custom MLM Software",
+      "Binary MLM",
+      "Matrix MLM",
+      "Unilevel MLM",
+      "Hybrid MLM",
+      "Investment MLM",
+      "Crypto MLM",
+      "Custom Compensation Plans",
+    ],
+  },
+  {
+    title: "Website Development",
+    icon: Globe,
+    color: "from-green-500 to-emerald-500",
+    items: [
+      "Corporate Website",
+      "MLM Website",
+      "Landing Pages",
+      "Product Website",
+      "Member Portal",
+      "Admin Portal",
+    ],
+  },
+  {
+    title: "Mobile Application",
+    icon: Smartphone,
+    color: "from-pink-500 to-purple-500",
+    items: [
+      "Android App",
+      "iOS App",
+      "Distributor App",
+      "Admin App",
+      "E-commerce App",
+    ],
+  },
+  {
+    title: "Desktop Application",
+    icon: Monitor,
+    color: "from-indigo-500 to-violet-500",
+    items: [
+      "Windows Software",
+      "Mac Desktop",
+      "Enterprise Solutions",
+    ],
+  },
+  {
+    title: "E-Commerce + MLM",
+    icon: ShoppingCart,
+    color: "from-yellow-500 to-orange-500",
+    items: [
+      "MLM Shopping Website",
+      "Product Management",
+      "Cart & Checkout",
+      "Inventory",
+      "Order Management",
+      "Coupons & Offers",
+    ],
+  },
+  {
+    title: "Payment Integration",
+    icon: CreditCard,
+    color: "from-teal-500 to-cyan-500",
+    items: [
+      "Razorpay",
+      "Cashfree",
+      "PhonePe",
+      "PayU",
+      "Stripe",
+      "UPI",
+      "International Payments",
+    ],
+  },
+  {
+    title: "Wallet & Payout",
+    icon: Wallet,
+    color: "from-lime-500 to-green-500",
+    items: [
+      "Income Wallet",
+      "E-Wallet",
+      "Reward Wallet",
+      "Withdrawal",
+      "Bank Transfer",
+      "UPI Payout",
+      "Commission Distribution",
+    ],
+  },
+  {
+    title: "Third Party Integrations",
+    icon: Link2,
+    color: "from-sky-500 to-blue-500",
+    items: [
+      "WhatsApp API",
+      "SMS Gateway",
+      "Email API",
+      "Zoom / Meet",
+      "Shipping APIs",
+      "CRM",
+      "Accounting",
+    ],
+  },
+  {
+    title: "AI Automation",
+    icon: Bot,
+    color: "from-fuchsia-500 to-pink-500",
+    items: [
+      "AI Chatbot",
+      "AI Customer Support",
+      "Lead Qualification",
+      "Content Generation",
+      "Workflow Automation",
+      "AI Sales Assistant",
+    ],
+  },
+  {
+    title: "Communication Platform",
+    icon: MessageCircle,
+    color: "from-green-400 to-green-600",
+    items: [
+      "WhatsApp Messaging",
+      "Bulk SMS",
+      "Email Campaign",
+      "Voice Calls",
+      "Video Calls",
+      "Push Notifications",
+    ],
+  },
+  {
+    title: "Meeting Platform",
+    icon: Video,
+    color: "from-red-500 to-rose-500",
+    items: [
+      "Video Meetings",
+      "Webinars",
+      "Screen Sharing",
+      "Team Collaboration",
+      "Live Training",
+    ],
+  },
+  {
+    title: "Team Communication",
+    icon: MessagesSquare,
+    color: "from-purple-500 to-indigo-500",
+    items: [
+      "Team Chat",
+      "Broadcast Messages",
+      "Group Discussion",
+      "Internal Messenger",
+      "File Sharing",
+    ],
+  },
+  {
+    title: "Creative Studio",
+    icon: Palette,
+    color: "from-orange-500 to-yellow-500",
+    items: [
+      "AI Poster Generator",
+      "Banner Generator",
+      "Social Media Posts",
+      "Video Creator",
+      "Flyer Designer",
+      "Certificate Generator",
+    ],
+  },
+  {
+    title: "Marketing & Lead Generation",
+    icon: TrendingUp,
+    color: "from-blue-500 to-indigo-600",
+    items: [
+      "SEO",
+      "Google Ads",
+      "Facebook Ads",
+      "Instagram Ads",
+      "YouTube Marketing",
+      "Funnels",
+      "Landing Pages",
+      "Email Marketing",
+      "WhatsApp Marketing",
+    ],
+  },
+  {
+    title: "CRM & Business Management",
+    icon: BarChart3,
+    color: "from-cyan-500 to-blue-500",
+    items: [
+      "Lead Management",
+      "Customer CRM",
+      "Distributor CRM",
+      "Sales Pipeline",
+      "Support Tickets",
+      "Analytics",
+    ],
+  },
+  {
+    title: "Cloud Infrastructure",
+    icon: Cloud,
+    color: "from-slate-500 to-gray-700",
+    items: [
+      "Cloud Hosting",
+      "Dedicated Servers",
+      "SSL Security",
+      "Daily Backup",
+      "Monitoring",
+      "Performance Optimization",
+    ],
+  },
+];
+
+  return (
+   <section className="bg- py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+
+        <div className="text-center mb-16">
+
+          <span className="text-orange-400 font-semibold uppercase tracking-widest">
+            Complete Business Solution
+          </span>
+
+          <h2 className="text-5xl text-black font-bold text-blck mt-4">
+            Complete MLM Ecosystem Services
+          </h2>
+
+          <p className="text-black mt-5 max-w-3xl mx-auto">
+            Build, Launch & Scale your MLM Business with our end-to-end
+            ecosystem including Software, Mobile Apps, AI Automation,
+            E-commerce, CRM, Marketing, Payments, Cloud Infrastructure and
+            Business Consulting.
           </p>
+
         </div>
 
-        <div className="max-w-6xl mx-auto mt-10 sm:mt-12 bg-slate-50 rounded-3xl p-5 sm:p-8 md:p-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
-            <BadgeStack />
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
 
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold leading-snug mb-4">
-                Building the future of <span className="text-orange-600">MLM</span> with
-                innovation &amp; trust
-              </h2>
-              <p className="text-slate-600 text-[15px] sm:text-base leading-relaxed">
-                <span className="font-semibold text-orange-600">India MLM</span> is a leading
-                provider of enterprise-grade network marketing solutions. We combine deep
-                industry knowledge with advanced technology to deliver{" "}
-                <span className="font-semibold text-slate-900">custom MLM software</span> that
-                is secure, scalable, and built for businesses across India and beyond.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+          {ecosystem.map((service, index) => {
 
-      {/* ============ EMPOWERING + STATS ============ */}
-      <section className="py-12 sm:py-16 px-4">
-        <div className="max-w-6xl mx-auto bg-gradient-to-br from-orange-50 to-white rounded-3xl p-5 sm:p-8 md:p-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold leading-snug mb-4">
-                Empowering <span className="text-orange-600">Network Marketing</span> with
-                Advanced Technology
-              </h2>
-              <p className="text-slate-600 text-[15px] sm:text-base leading-relaxed">
-                Our platform empowers Indian MLM businesses with{" "}
-                <span className="font-semibold text-slate-900">automated member management</span>,{" "}
-                <span className="font-semibold text-slate-900">real-time commission tracking</span>,
-                and{" "}
-                <span className="font-semibold text-slate-900">
-                  multi-compensation plans (binary, matrix, unilevel, generation)
-                </span>
-                . We integrate secure{" "}
-                <span className="font-semibold text-slate-900">e-wallets</span>,{" "}
-                <span className="font-semibold text-slate-900">multi-language support</span>, and{" "}
-                <span className="font-semibold text-slate-900">dedicated franchise portals</span>.
-              </p>
-            </div>
+            const Icon = service.icon;
 
-            <div className="rounded-2xl">
-              <TechStackArt />
-            </div>
-          </div>
-
-          {/* stats row */}
-          <div className="mt-10 sm:mt-12 bg-orange-50 rounded-2xl py-7 sm:py-8 px-4">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 text-center">
-              <div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-orange-600">8+</div>
-                <div className="text-slate-600 text-sm mt-1">Years of Excellence</div>
-              </div>
-              <div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-orange-600">300+</div>
-                <div className="text-slate-600 text-sm mt-1">Projects Delivered</div>
-              </div>
-              <div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-orange-600">25+</div>
-                <div className="text-slate-600 text-sm mt-1">Cities Served Across India</div>
-              </div>
-            </div>
-
-            <p className="text-center text-slate-500 text-sm italic mt-7 sm:mt-8 max-w-2xl mx-auto">
-              "From health &amp; wellness to e-commerce and crypto, we help Indian MLM
-              businesses launch, expand, and dominate their market."
-            </p>
-
-            <div className="flex justify-center mt-6">
-              <button className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-semibold px-6 py-3 rounded-full text-sm sm:text-base transition">
-                Explore Our MLM Solutions
-                <ArrowRightIcon />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ TEAM ============ */}
-      <section className="py-12 sm:py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl md:text-[34px] font-extrabold mb-2">
-              <span className="text-orange-600">Meet Our</span> Expert Team
-            </h2>
-            <div className="w-10 h-1 bg-orange-600 rounded-full mx-auto mb-4" />
-            <p className="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">
-              Passionate professionals across India dedicated to delivering cutting-edge MLM
-              software solutions.
-            </p>
-          </div>
-
-          <div className="bg-slate-50 rounded-3xl p-5 sm:p-8 md:p-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 items-center">
-              <TeamPhoto />
-
-              <div>
-                <span className="inline-flex items-center gap-1.5 bg-orange-100 text-orange-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
-                  Our Team
-                </span>
-                <h3 className="text-xl sm:text-2xl font-extrabold mb-3">
-                  Driven by <span className="text-orange-600">Passion</span> &amp;{" "}
-                  <span className="text-orange-600">Expertise</span>
-                </h3>
-                <p className="text-slate-600 text-[15px] leading-relaxed mb-5">
-                  At <span className="font-semibold text-orange-600">India MLM</span>, our team
-                  is our greatest asset. We bring together{" "}
-                  <span className="font-semibold text-slate-900">industry veterans</span>, tech
-                  innovators, and customer-first professionals who work collaboratively to
-                  deliver exceptional MLM software solutions to businesses across the country.
-                </p>
-
-                <div className="space-y-3 mb-5">
-                  <div className="flex items-start gap-2.5">
-                    <CheckIcon />
-                    <span className="text-sm text-slate-700">
-                      50+ skilled MLM software professionals
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckIcon />
-                    <span className="text-sm text-slate-700">8+ years of industry experience</span>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckIcon />
-                    <span className="text-sm text-slate-700">
-                      Dedicated R&amp;D and support departments
-                    </span>
-                  </div>
+            return (
+              <div
+                key={index}
+                className="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 hover:border-orange-500 transition-all duration-500 hover:-translate-y-2"
+              >
+                <div
+                  className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${service.color} flex items-center justify-center mb-6`}
+                >
+                  <Icon className="text-black w-8 h-8" />
                 </div>
 
-                <span className="inline-flex items-center gap-1.5 bg-orange-50 text-orange-600 text-xs font-bold px-3 py-1.5 rounded-full">
-                  🏆 300+ Projects Delivered
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                <h3 className="text-2xl font-bold text-black mb-5">
+                  {service.title}
+                </h3>
 
-      {/* ============ VISION & MISSION ============ */}
-      <section className="py-12 sm:py-16 px-4 relative overflow-hidden">
-        <div
-          className="absolute inset-0 -z-10 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 30%, #1e293b 0%, transparent 35%), radial-gradient(circle at 80% 70%, #1e293b 0%, transparent 35%)",
-          }}
-        />
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          <div className="bg-white border border-slate-100 rounded-2xl shadow-sm p-6 sm:p-8">
-            <h3 className="text-xl sm:text-2xl font-extrabold text-orange-600 mb-1">
-              Our Vision
-            </h3>
-            <div className="w-8 h-0.5 bg-orange-600 mb-4" />
-            <p className="text-slate-600 text-[15px] leading-relaxed mb-5">
-              At <span className="font-semibold text-orange-600">India MLM</span>, our vision is
-              to redefine how network marketing businesses operate across India by providing
-              smart, scalable, and secure software solutions. We envision a future where every
-              MLM business, regardless of size, can leverage technology to grow confidently and
-              sustainably.
-            </p>
-            <div className="space-y-3 mb-6">
-              <div className="flex items-start gap-2.5">
-                <Dot />
-                <span className="text-sm text-slate-700">
-                  Innovative tools to lead India's MLM industry forward.
-                </span>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <Dot />
-                <span className="text-sm text-slate-700">
-                  Commitment to excellence in every solution we offer.
-                </span>
-              </div>
-            </div>
-            <button className="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-6 py-2.5 rounded-full text-sm transition">
-              Contact Us
-            </button>
-          </div>
+                <ul className="space-y-3">
+                  {service.items.map((item, i) => (
+                    <li
+                      key={i}
+                      className="text-gray-300 flex items-center gap-3"
+                    >
+                      <div className="w-2 h-2 rounded-full bg-orange-400"></div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
 
-          <div className="bg-white border border-slate-100 rounded-2xl shadow-sm p-6 sm:p-8">
-            <h3 className="text-xl sm:text-2xl font-extrabold text-orange-600 mb-1">
-              Our Mission
-            </h3>
-            <div className="w-8 h-0.5 bg-orange-600 mb-4" />
-            <p className="text-slate-600 text-[15px] leading-relaxed mb-5">
-              The mission of <span className="font-semibold text-orange-600">India MLM</span> is
-              to empower MLM enterprises with reliable and easy-to-use technology that automates
-              processes, supports scalability, and enhances business intelligence. We aim to be
-              the driving force behind your MLM success story.
-            </p>
-            <div className="space-y-3 mb-6">
-              <div className="flex items-start gap-2.5">
-                <Dot />
-                <span className="text-sm text-slate-700">
-                  All-in-one MLM business platform designed for growth.
-                </span>
               </div>
-              <div className="flex items-start gap-2.5">
-                <Dot />
-                <span className="text-sm text-slate-700">
-                  Real-time analytics and tools to manage your network effectively.
-                </span>
-              </div>
-            </div>
-            <button className="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-6 py-2.5 rounded-full text-sm transition">
-              Contact Us
-            </button>
-          </div>
+            );
+          })}
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------- */
+/* PAGE                                                         */
+/* ---------------------------------------------------------- */
+export default function AIConsultingPage() {
+  return (
+    <main>
+      <Hero />
+      <AboutUs />
+  
+        <OurProcess />
+      <MissionVision />
+      <OurExperts />
+      <MentorsSection />
+    
+     
+    </main>
   );
 }

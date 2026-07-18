@@ -29,11 +29,12 @@ import Generation_plan from "./pages/Generation-plan/page.jsx"
 import Forex_plan from "./pages/Forex-plan/page.jsx" 
 import Unilevel_Plans_mlm from "./pages/Unilevel-Plans-mlm/page.jsx"
 import Repurchase from "./pages/Repurchase/page.jsx"
-
+import Trustedby from "./pages/Home/sections/Trastedby.jsx"
+import AboutForm from "./pages/Home/sections/Aboutform.jsx"
 import Matrix_Plans_mlm from './pages/Matrix-Plans-mlm/page.jsx'
 import DecentralizedPlanPage from './pages/Decentralized-plan/page.jsx';
 //import Investment_plan from "./pages/Investment-plan/page.jsx"
-
+import Main from "./pages/About/main.jsx"
 
 // Fully built pages are imported eagerly-lazy (still code-split, just already real).
 const Home = lazy(() => import('@pages/Home'));
@@ -94,6 +95,8 @@ export default function App() {
             <Route path="Crowdfunding-Plan" element={<Crowdfunding_Plan />} />
             <Route path="Donation-Plan" element={<Donation_Plan />} />
             <Route path="DecentralizedPlanPage" element={<DecentralizedPlanPage />} />
+ <Route path="trastedby" element={< Trustedby/>} />
+            <Route path="aboutform" element={<AboutForm />} />
 
             <Route path="/Forex-plan" element={<Forex_plan/>} />
             <Route path="/Generation-plan" element={<Generation_plan />} />
@@ -106,7 +109,7 @@ export default function App() {
             <Route path="/Stair-step-Breakaway-Plan" element={<Stair_step_Breakaway_Plan />} />
             <Route path="/Unilevel-Plans-mlm" element={<Unilevel_Plans_mlm />} />
 
-        
+        <Route path="main" element={<Main/>}/>
             <Route path="/faq" element={<FAQ />} />
             <Route path="/blog/:slug" element={<Blog />} />
             <Route path="/Sitemap" element={<Sitemap />} />

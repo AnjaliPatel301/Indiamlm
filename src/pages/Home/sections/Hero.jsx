@@ -1,54 +1,63 @@
-
-
 import React from "react";
+import NetworkAvatars from "./NetworkAvatars";
+import { ArrowRight, PlayCircle } from "lucide-react";
+
 
 const Hero = () => {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="relative h-screen overflow-hidden">
-        {/* Background Video */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="https://www.pexels.com/download/video/7308093/" type="video/mp4" />
-        </video>
-
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-orange/70"></div>
-
+      <section className="relative overflow-hidden bg-white ">
         {/* Content */}
-        <div className="relative z-10 justify-center text-center container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-          <div className="w-full max-w-3xl text-white px-2 sm:px-0">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold leading-tight mb-6">
-              Powerful <span className="text-orange-500">MLM Software</span>
-              <br />
-              For Every Business Model
-            </h1>
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-16 flex items-center">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20">
+            {/* Left: Text */}
+            <div className="text-left">
+              <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl from-neutral-950  leading-tight mb-6 text-black">
+                Powerful <span className="text-orange-500">MLM Software</span>
+                <br />
+                For Every Business Model
+              </h1>
 
-            <p className="text-white text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
-              Binary, Matrix, Unilevel, Board, Investment, Crowd Funding,
-              Repurchase, Direct Selling and all custom MLM plans supported.
-            </p>
+             <p className="text-gray-700 text-base sm:text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
+  Empower your network marketing business with our advanced MLM software
+  designed to support every compensation plan including Binary, Matrix,
+  Unilevel, Board, Generation, Investment, Repurchase, Crowd Funding,
+  Direct Selling, and fully customized MLM plans. Manage members,
+  commissions, e-wallets, payouts, genealogy, reports, e-commerce,
+  subscriptions, and business analytics from one powerful, secure, and
+  scalable platform built for startups as well as enterprise-level MLM
+  companies.
+</p>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mt-8">
 
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4">
-              <button className="w-full sm:w-auto bg-orange-500 text-white hover:bg-orange-600 px-8 py-4 rounded-md font-semibold transition">
-                Free Demo
-              </button>
+  {/* Free Demo */}
+  <button className="group flex items-center justify-center gap-3 bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-sm  text-lg shadow-lg hover:shadow-orange-300 transition-all duration-300">
+    <PlayCircle size={22} />
+    <span>Free Demo</span>
+  </button>
 
-              <button className="w-full sm:w-auto border border-white/30 hover:bg-white/10 px-8 py-4 rounded-md font-semibold transition">
-                View Plans
-              </button>
+  {/* View Plans */}
+  <button className="group flex items-center justify-center gap-3 bg-black hover:bg-gray-900 text-white px-10 py-4 rounded-sm text-lg shadow-lg transition-all duration-300">
+    <span>View Plans</span>
+    <ArrowRight
+      size={22}
+      className="transition-transform duration-300 group-hover:translate-x-1"
+    />
+  </button>
+
+</div>
+            </div>
+
+            {/* Right: Network animation */}
+            <div className="w-full">
+              <NetworkAvatars />
             </div>
           </div>
         </div>
-      </section>
 
-    
+      
+      </section>
     </>
   );
 };

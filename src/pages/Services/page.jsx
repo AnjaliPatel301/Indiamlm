@@ -338,7 +338,7 @@ export default function ServicesPage() {
             <path key={i} d={`M${x1},${y1} L${x2},${y2}`} stroke="#d97706" strokeWidth="1.5" opacity="0.5"/>
           ))}
         </svg>
-        <div className="absolute inset-0 flex flex-col items-center justify-center pt-8 gap-3">
+        <div className="absolute inset-0 flex flex-col items-center justify-center pt-24 gap-3">
          
           <h1 className="text-white font-extrabold text-5xl tracking-widest drop-shadow-2xl">SERVICES</h1>
           <p className="text-orange-100 text-sm max-w-md text-center px-4">Complete MLM software solutions — from development to deployment, mobile to global.</p>

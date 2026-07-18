@@ -29,7 +29,7 @@ export default function Home() {
       <FeaturedPlans />
       <AIAutomation />
       <MobileAppShowcase />
-      <AnalyticsShowcase />
+   
       <TestimonialsCarousel />
       <GlobalReach />
       <PricingPreview />
